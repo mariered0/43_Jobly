@@ -6,21 +6,37 @@ import Job from "./Job";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
-
+import NavBar from "./NavBar";
 
 function Routes() {
-    return (
-        <BrowserRouter>
-            <Route exact path="/" element={ <Home />} />
-            <Route exact path="/companies" element={ <Company />} />
-            <Route exact path="/companies/:company" element={ <Job /> } />
-            <Route exact path="/jobs" element={ <Job />} />
-            <Route exact path="/login" element={ <Login />} />
-            <Route exact path="/signup" element={ <Signup />} />
-            <Route exact path="/profile" element={ <Profile />} />
+  return (
+    <BrowserRouter>
+      <NavBar />
 
-        </BrowserRouter>
-    )
-};
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/companies">
+        <Company />
+      </Route>
+      <Route exact path="/companies/:company">
+        <Job />
+      </Route>
+      <Route exact path="/jobs">
+        <Job />
+      </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      <Route exact path="/signup">
+        <Signup />
+      </Route>
+
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
+    </BrowserRouter>
+  );
+}
 
 export default Routes;
