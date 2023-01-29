@@ -1,5 +1,6 @@
 import React from "react";
 import CompanyList from "./CompanyList";
+import SearchForm from "../common/SearchForm";
 
 /*
 /companies route
@@ -12,7 +13,7 @@ function Company() {
   return (
     <div>
       <h1>Company</h1>
-      {/* <Form /> */}
+      <SearchForm />
       <CompanyList />
 
     </div>
