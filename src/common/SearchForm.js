@@ -26,9 +26,10 @@ const SearchForm = () => {
   return (
     <div className="container">
       <Form>
-        <Row>
-          <Col>
-            <FormGroup>
+        <Row className="row-cols-lg-auto g-3">
+          <Col
+               md="6" 
+               lg="8">
               <Input
                 bsSize="lg"
                 className="mb-3"
@@ -36,8 +37,8 @@ const SearchForm = () => {
                 name="search"
                 placeholder="Enter search term..."
                 type="text"
+                onChange={handleChange}
               />
-            </FormGroup>
           </Col>
           <Col>
             <Button size="lg">Submit</Button>

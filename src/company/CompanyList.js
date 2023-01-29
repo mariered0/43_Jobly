@@ -10,7 +10,6 @@ const CompanyList = () => {
     async function getCompany() {
       const companies = await JoblyApi.getCompanies();
       setCompanies(companies);
-      console.log(companies);
     }
     getCompany();
   }, []);
@@ -18,13 +17,12 @@ const CompanyList = () => {
   return (
     <div>
       {companies?.map((company) => (
-        <Link to={`/companies/${company.handle}`} key={company.handle}>
           <CompanyCard
             key={company.handle}
+            handle={company.handle}
             name={company.name}
             desc={company.description}
           />
-        </Link>
       ))}
     </div>
   );
