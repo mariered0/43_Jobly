@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./Home";
-import Company from "./company/Company";
+import CompanyList from "./company/CompanyList";
 import CompanyDetail from "./company/CompanyDetail"
-import Job from "./job/Job";
+import JobList from "./job/JobList";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
@@ -18,13 +18,13 @@ function Routes() {
         <Home />
       </Route>
       <Route exact path="/companies">
-        <Company />
+        <CompanyList />
       </Route>
       <Route exact path="/companies/:handle">
         <CompanyDetail />
       </Route>
       <Route exact path="/jobs">
-        <Job />
+        <JobList />
       </Route>
       <Route exact path="/login">
         <Login />

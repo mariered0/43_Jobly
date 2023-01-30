@@ -45,15 +45,10 @@ class JoblyApi {
 
   // obviously, you'll add a lot here ...
 
-  /**  Get all company ... Maybe not necessary? */
 
-  // static async getAllCompanies() {
-  //   let res = await this.request('companies');
-  //   return res.companies;
-  // }
-
-  /** Get companies with name 
-   *   returns all companies if name is undefined
+  /** Get companies with name (or a search term)
+   *   returns companies with that conditions
+   *   or returns all companies if name(search term) is undefined
   */
 
   static async getCompanies(name) {
@@ -61,9 +56,15 @@ class JoblyApi {
     return res.companies;
   }
 
-  /** Get jobs in the company with handle
-   *   returns all jobs within the company
-  */
+  /** Get jobs with title (or a search term)
+   *    returns jobs with that conditions
+   *    or returns all jobs if title (search term) is undefined
+   */
+
+  static async getJobs(title) {
+    let res = await this.request('jobs', {title});
+    return res.jobs;
+  }
 
 
 }

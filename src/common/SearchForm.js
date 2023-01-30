@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Input, Button, Row, Col } from "reactstrap";
+import { Form, Input, Button, Row, Col } from "reactstrap";
+import CompanyList from "../company/CompanyList"
 
-const SearchForm = () => {
+/** Search form 
+ * 
+ * Used on Company and Job to allow search for companies and jobs.
+*/
+
+
+const SearchForm = ({ search }) => {
     const INITIAL_STATE = {
         term: ""
     }
@@ -18,8 +25,7 @@ const SearchForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        
+        search(formData.term);    
     }
 
 
@@ -33,15 +39,17 @@ const SearchForm = () => {
               <Input
                 bsSize="lg"
                 className="mb-3"
-                id="search"
-                name="search"
+                id="term"
+                name="term"
                 placeholder="Enter search term..."
                 type="text"
                 onChange={handleChange}
               />
           </Col>
           <Col>
-            <Button size="lg">Submit</Button>
+            <Button size="lg"
+                    type="submit"
+                    onClick={handleSubmit}>Submit</Button>
           </Col>
         </Row>
       </Form>

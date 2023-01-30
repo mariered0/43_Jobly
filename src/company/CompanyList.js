@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import CompanyCard from "./CompanyCard";
+import SearchForm from "../common/SearchForm";
 import JoblyApi from "../api/api";
 
 const CompanyList = () => {
-  const [companies, setCompanies] = useState(null);
 
+  const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    async function getCompany() {
-      const companies = await JoblyApi.getCompanies();
-      setCompanies(companies);
-    }
-    getCompany();
+    search();
   }, []);
+
+
+  async function search(term) {
+    if (!term) term = undefined;
+    const getData = await JoblyApi.getCompanies(term);
+    setCompanies(getData);
+  }
 
   return (
     <div>
-      {companies?.map((company) => (
+      <SearchForm search={search} />
+
+      {companies.length ?(
+      companies.map((company) => (
           <CompanyCard
             key={company.handle}
             handle={company.handle}
             name={company.name}
             desc={company.description}
           />
-      ))}
+      ))): (
+        <p>No results found.</p>
+      )}
     </div>
   );
 };
