@@ -30,8 +30,14 @@ function NavBar() {
             </NavItem>
 
             <NavItem className="px-2">
-              <NavLink exact to="/logout">
-                Logout
+              <NavLink exact to="/login">
+                Login
+              </NavLink>
+            </NavItem>
+
+            <NavItem className="px-2">
+              <NavLink exact to="/signup">
+                Sign up
               </NavLink>
             </NavItem>
 

@@ -4,8 +4,8 @@ import Home from "./Home";
 import CompanyList from "./company/CompanyList";
 import CompanyDetail from "./company/CompanyDetail"
 import JobList from "./job/JobList";
-import Login from "./Login";
-import Signup from "./Signup";
+import LoginForm from "./user/LoginForm";
+import SignupForm from "./user/SignupForm";
 import Profile from "./Profile";
 import NavBar from "./NavBar";
 
@@ -27,10 +27,10 @@ function Routes() {
         <JobList />
       </Route>
       <Route exact path="/login">
-        <Login />
+        <LoginForm />
       </Route>
       <Route exact path="/signup">
-        <Signup />
+        <SignupForm />
       </Route>
 
       <Route exact path="/profile">
