@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Routes from "./Routes";
 import UserContext from "./user/UserContext";
 import JoblyApi from "./api/api";
 import "./App.css";
+import jwt from "jsonwebtoken";
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   async function signup(data) {
     try {
@@ -13,8 +15,7 @@ function App() {
       setToken(token);
       return { success: true };
     } catch (e) {
-      //display e message here on screen
-      console.error("signUp failed", e);
+      console.error("signup failed", e);
       return { success: false, e };
     }
   }
@@ -26,9 +27,29 @@ function App() {
       return { success: true };
     } catch (e) {
       console.error("login failed", e);
-      return { success: false, e}
+      return { success: false, e };
     }
   }
+
+  useEffect (function getUserData() {
+    async function getCurrentUser() {
+      // if (token) {
+        try {
+          //decode the token to get username
+          const { username } = jwt.decode(token);
+          //change token in api
+          JoblyApi.token = token;
+          const user = await JoblyApi.currentUser(username);
+          setCurrentUser(user);
+        } catch (e) {
+          console.error("getCurrentUser failed", e);
+        // }
+      }
+      
+    }
+    getCurrentUser();
+  }, [token]);
+    
 
   return (
     <div className="App">

@@ -86,7 +86,7 @@ const SignupForm = () => {
             { errors &&
             <Alert color="danger">
               {errors.map((error, idx) => (
-                <p key={idx}>{error}</p>
+                <p key={idx} className="mb-0">{error}</p>
               ))}
             </Alert>
             }

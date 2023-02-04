@@ -50,6 +50,17 @@ class JoblyApi {
     return res.token;
   }
 
+  /** Get current user info */
+
+  static async currentUser (username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+
+
+
+
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {

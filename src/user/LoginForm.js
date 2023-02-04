@@ -9,6 +9,7 @@ import {
   Card,
   CardBody,
   Button,
+  Alert
 } from "reactstrap";
 
 const LoginForm = () => {
@@ -71,6 +72,16 @@ const LoginForm = () => {
                 onChange={handleChange}
               />
             </FormGroup>
+
+            { errors &&
+            <Alert color="danger">
+              {errors.map((error, idx) => (
+                <p key={idx} className="mb-0">{error}</p>
+              ))}
+            </Alert>
+            }
+
+
             <Button onClick={handleSubmit}>Submit</Button>
           </Form>
         </CardBody>
