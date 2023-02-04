@@ -13,6 +13,7 @@ function App() {
     try {
       let token = await JoblyApi.signup(data);
       setToken(token);
+      localStorage.setItem('token', token);
       return { success: true };
     } catch (e) {
       console.error("signup failed", e);
@@ -24,6 +25,7 @@ function App() {
     try {
       let token = await JoblyApi.login(data);
       setToken(token);
+      localStorage.setItem('token', token);
       return { success: true };
     } catch (e) {
       console.error("login failed", e);
@@ -34,6 +36,7 @@ function App() {
   async function logout() {
     setCurrentUser(null);
     setToken(null);
+    localStorage.setItem('token', null);
   }
 
   useEffect (function getUserData() {
