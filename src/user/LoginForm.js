@@ -82,7 +82,7 @@ const LoginForm = () => {
             }
 
 
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button type="submit" onClick={handleSubmit}>Submit</Button>
           </Form>
         </CardBody>
       </Card>

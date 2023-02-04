@@ -31,6 +31,11 @@ function App() {
     }
   }
 
+  async function logout() {
+    setCurrentUser(null);
+    setToken(null);
+  }
+
   useEffect (function getUserData() {
     async function getCurrentUser() {
       // if (token) {
@@ -53,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ token, signup, login }}>
+      <UserContext.Provider value={{ token, currentUser, signup, login, logout }}>
         <Routes />
       </UserContext.Provider>
     </div>

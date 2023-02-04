@@ -1,53 +1,59 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, Link } from "react-router-dom";
+import userContext from "./user/UserContext";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
-import "./NavBar.css"
+import "./NavBar.css";
 
 function NavBar() {
+  const { currentUser, logout } = useContext(userContext);
+
   return (
     <div>
       <Navbar expand="md">
         <NavbarBrand href="/">Jobly</NavbarBrand>
+        <Nav className="ms-auto " navbar>
+          {currentUser ? (
+            <>
+              <NavItem className="px-2">
+                <NavLink exact to="/companies">
+                  Company
+                </NavLink>
+              </NavItem>
 
+              <NavItem className="px-2">
+                <NavLink exact to="/jobs">
+                  Job
+                </NavLink>
+              </NavItem>
 
-          <Nav className="ms-auto " navbar>
-            <NavItem className="px-2">
-              <NavLink exact to="/companies">
-                Company
-              </NavLink>
-            </NavItem>
+              <NavItem className="px-2">
+                <NavLink exact to="/:username">
+                  Profile
+                </NavLink>
+              </NavItem>
 
-            <NavItem className="px-2">
-              <NavLink exact to="/jobs">
-                Job
-              </NavLink>
-            </NavItem>
+              <NavItem className="px-2">
+                <Link to="/" onClick={logout}>
+                  Log out {currentUser ? currentUser.username : ""}
+                </Link>
+              </NavItem>
+            </>
+          ) : (
+            <>
+              <NavItem className="px-2">
+                <NavLink exact to="/login">
+                  Login
+                </NavLink>
+              </NavItem>
 
-            <NavItem className="px-2">
-              <NavLink exact to="/profile">
-                Profile
-              </NavLink>
-            </NavItem>
-
-            <NavItem className="px-2">
-              <NavLink exact to="/login">
-                Login
-              </NavLink>
-            </NavItem>
-
-            <NavItem className="px-2">
-              <NavLink exact to="/signup">
-                Sign up
-              </NavLink>
-            </NavItem>
-
-            <NavItem className="px-2">
-              <NavLink exact to="/:username">
-                Username
-              </NavLink>
-            </NavItem>
-          </Nav>
-
+              <NavItem className="px-2">
+                <NavLink exact to="/signup">
+                  Sign up
+                </NavLink>
+              </NavItem>
+            </>
+          )}
+        </Nav>
       </Navbar>
     </div>
   );
