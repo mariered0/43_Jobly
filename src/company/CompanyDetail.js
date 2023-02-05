@@ -14,11 +14,9 @@ const CompanyDetail = () => {
     async function getCompanyDetail(handle) {
       const details = await JoblyApi.getCompany(handle);
       setCompanyDetail(details);
-      console.log("company details:", details);
     }
     getCompanyDetail(handle);
 
-    console.log("companyDetail:", companyDetail);
   }, []);
 
   if (!companyDetail) return <p>Loading...</p>;

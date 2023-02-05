@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import Routes from "./Routes";
 import UserContext from "./user/UserContext";
 import JoblyApi from "./api/api";
+import Loading from "./common/Loading";
 import useLocalStorage from "./hooks/useLocalStorage";
 import "./App.css";
 import jwt from "jsonwebtoken";
 
 function App() {
   const [token, setToken] = useLocalStorage("token", null);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState();
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   async function signup(data) {
     try {
@@ -47,6 +49,7 @@ function App() {
           JoblyApi.token = token;
           const user = await JoblyApi.currentUser(username);
           setCurrentUser(user);
+          setDataLoaded(true);
         } catch (e) {
           console.error("getCurrentUser failed", e);
         }
@@ -55,11 +58,13 @@ function App() {
     },
     [token]
   );
+  
+  if (!dataLoaded) return <Loading />
 
   return (
     <div className="App">
       <UserContext.Provider
-        value={{ token, currentUser, signup, login, logout }}
+        value={{ token, currentUser, dataLoaded, setCurrentUser, signup, login, logout }}
       >
         <Routes />
       </UserContext.Provider>

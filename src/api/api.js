@@ -57,9 +57,12 @@ class JoblyApi {
     return res.user;
   }
 
+  /** Update (current) user profile info */
 
-
-
+  static async updateCurrentUserProf (username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
+  }
 
   /** Get details on a company by handle. */
 
@@ -67,8 +70,6 @@ class JoblyApi {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
-
-  // obviously, you'll add a lot here ...
 
 
   /** Get companies with name (or a search term)
@@ -90,6 +91,8 @@ class JoblyApi {
     let res = await this.request('jobs', {title});
     return res.jobs;
   }
+
+
 
 
 }

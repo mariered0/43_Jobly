@@ -6,7 +6,7 @@ import CompanyDetail from "./company/CompanyDetail"
 import JobList from "./job/JobList";
 import LoginForm from "./user/LoginForm";
 import SignupForm from "./user/SignupForm";
-import Profile from "./Profile";
+import Profile from "./user/Profile";
 import NavBar from "./nav/NavBar";
 
 function Routes() {
@@ -37,7 +37,6 @@ function Routes() {
         <Profile />
       </Route>
 
-      {/* <Redirect to="/" /> */}
     </BrowserRouter>
   );
 }

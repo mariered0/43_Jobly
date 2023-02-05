@@ -27,7 +27,7 @@ function NavBar() {
               </NavItem>
 
               <NavItem className="px-2">
-                <NavLink exact to="/:username">
+                <NavLink exact to="/profile">
                   Profile
                 </NavLink>
               </NavItem>
