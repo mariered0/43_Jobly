@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import JobCard from "./JobCard";
 import SearchForm from "../common/SearchForm";
+import UserContext from "../user/UserContext";
 import JoblyApi from "../api/api";
 
-
 const JobList = () => {
+  const { token } = useContext(UserContext);
 
-    const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState([]);
   useEffect(() => {
     search();
   }, []);
-
 
   async function search(term) {
     if (!term) term = undefined;
@@ -18,24 +19,29 @@ const JobList = () => {
     setJobs(getData);
   }
 
+  if (token) {
     return (
-        <div className="container">
+      <div className="container">
         <h1>JobList</h1>
         <SearchForm search={search} />
 
-      {jobs.length ?(
-      jobs.map((job) => (
-          <JobCard
-            key={job.id}
-            title={job.title}
-            salary={job.salary}
-            equity={job.equity}
-          />
-      ))): (
-        <p>No results found.</p>
-      )}
-        </div>
-    )
-}
+        {jobs.length ? (
+          jobs.map((job) => (
+            <JobCard
+              key={job.id}
+              title={job.title}
+              salary={job.salary}
+              equity={job.equity}
+            />
+          ))
+        ) : (
+          <p>No results found.</p>
+        )}
+      </div>
+    );
+  } else {
+    return <Redirect to="/" />;
+  }
+};
 
 export default JobList;

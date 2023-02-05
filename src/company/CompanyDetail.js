@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import JoblyApi from "../api/api";
+import UserContext from "../user/UserContext";
 import { useParams } from "react-router-dom";
 import JobCard from "../job/JobCard";
 
 const CompanyDetail = () => {
+  const { token } = useContext(UserContext);
   const { handle } = useParams();
   const [companyDetail, setCompanyDetail] = useState(null);
-  
+
   useEffect(() => {
     async function getCompanyDetail(handle) {
       const details = await JoblyApi.getCompany(handle);
@@ -15,30 +18,30 @@ const CompanyDetail = () => {
     }
     getCompanyDetail(handle);
 
-    console.log('companyDetail:', companyDetail);
+    console.log("companyDetail:", companyDetail);
   }, []);
 
-  //change this to proper loading display later!
-  if (!companyDetail) return <p>Loading...</p>
+  if (!companyDetail) return <p>Loading...</p>;
 
-  return (
-   <div className="container">
-      <h4>{companyDetail.name}</h4>
-      <p>{companyDetail.description}</p>
+  if (token) {
+    return (
+      <div className="container">
+        <h4>{companyDetail.name}</h4>
+        <p>{companyDetail.description}</p>
 
-    {companyDetail.jobs?.map(job => (
-        <JobCard
-            key={job.id} 
+        {companyDetail.jobs?.map((job) => (
+          <JobCard
+            key={job.id}
             title={job.title}
             salary={job.salary}
             equity={job.equity}
-        />
-    ))}
-      
-        
-      
-    </div>
-  );
+          />
+        ))}
+      </div>
+    );
+  } else {
+    return <Redirect to="/" />;
+  }
 };
 
 export default CompanyDetail;

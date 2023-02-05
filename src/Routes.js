@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Home from "./home/Home";
 import CompanyList from "./company/CompanyList";
 import CompanyDetail from "./company/CompanyDetail"
@@ -36,6 +36,8 @@ function Routes() {
       <Route exact path="/profile">
         <Profile />
       </Route>
+
+      {/* <Redirect to="/" /> */}
     </BrowserRouter>
   );
 }
