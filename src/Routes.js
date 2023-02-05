@@ -7,7 +7,7 @@ import JobList from "./job/JobList";
 import LoginForm from "./user/LoginForm";
 import SignupForm from "./user/SignupForm";
 import Profile from "./Profile";
-import NavBar from "./NavBar";
+import NavBar from "./nav/NavBar";
 
 function Routes() {
   return (

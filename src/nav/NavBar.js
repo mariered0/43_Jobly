@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
-import userContext from "./user/UserContext";
+import userContext from "../user/UserContext";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import "./NavBar.css";
 
