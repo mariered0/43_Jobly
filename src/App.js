@@ -7,9 +7,8 @@ import "./App.css";
 import jwt from "jsonwebtoken";
 
 function App() {
-  const [token, setToken] = useLocalStorage('token', null);
+  const [token, setToken] = useLocalStorage("token", null);
   const [currentUser, setCurrentUser] = useState(null);
-  
 
   async function signup(data) {
     try {
@@ -38,9 +37,9 @@ function App() {
     setToken(null);
   }
 
-  useEffect (function getUserData() {
-    async function getCurrentUser() {
-      if (token) {
+  useEffect(
+    function getUserData() {
+      async function getCurrentUser() {
         try {
           //decode the token to get username
           const { username } = jwt.decode(token);
@@ -48,21 +47,20 @@ function App() {
           JoblyApi.token = token;
           const user = await JoblyApi.currentUser(username);
           setCurrentUser(user);
-          localStorage.setItem('token', JSON.stringify(token));
         } catch (e) {
           console.error("getCurrentUser failed", e);
         }
-        setToken(JSON.parse(localStorage.getItem('token')));
       }
-      
-    }
-    getCurrentUser();
-  }, [token]);
-    
+      getCurrentUser();
+    },
+    [token]
+  );
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ token, currentUser, signup, login, logout }}>
+      <UserContext.Provider
+        value={{ token, currentUser, signup, login, logout }}
+      >
         <Routes />
       </UserContext.Provider>
     </div>
