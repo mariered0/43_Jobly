@@ -4,6 +4,7 @@ import JoblyApi from "../api/api";
 import UserContext from "../user/UserContext";
 import { useParams } from "react-router-dom";
 import JobCard from "../job/JobCard";
+import Loading from "../common/Loading";
 
 const CompanyDetail = () => {
   const { token } = useContext(UserContext);
@@ -19,7 +20,7 @@ const CompanyDetail = () => {
 
   }, []);
 
-  if (!companyDetail) return <p>Loading...</p>;
+  if (!companyDetail) return <Loading />;
 
   if (token) {
     return (

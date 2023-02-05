@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import JobCard from "./JobCard";
 import SearchForm from "../common/SearchForm";
 import UserContext from "../user/UserContext";
+import Loading from "../common/Loading";
 import JoblyApi from "../api/api";
 
 const JobList = () => {
@@ -18,6 +19,8 @@ const JobList = () => {
     const getData = await JoblyApi.getJobs(term);
     setJobs(getData);
   }
+
+  if(!jobs) return <Loading />;
 
   if (token) {
     return (
