@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 
 function App() {
   const [token, setToken] = useLocalStorage("token", null);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
   const [dataLoaded, setDataLoaded] = useState(false);
 
   async function signup(data) {
@@ -44,14 +44,18 @@ function App() {
       async function getCurrentUser() {
         try {
           //decode the token to get username
+          if(token){
           const { username } = jwt.decode(token);
           //change token in api
           JoblyApi.token = token;
           const user = await JoblyApi.currentUser(username);
           setCurrentUser(user);
           setDataLoaded(true);
+          }
+          
         } catch (e) {
           console.error("getCurrentUser failed", e);
+          setDataLoaded(false);
         }
       }
       getCurrentUser();
@@ -59,7 +63,7 @@ function App() {
     [token]
   );
   
-  if (!dataLoaded) return <Loading />
+  // if (!dataLoaded) return <Loading />
 
   return (
     <div className="App">

@@ -37,6 +37,9 @@ function Routes() {
         <Profile />
       </Route>
 
+
+      {/* <Redirect to="/" /> */}
+
     </BrowserRouter>
   );
 }

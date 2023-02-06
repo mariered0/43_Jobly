@@ -9,7 +9,7 @@ function NavBar() {
 
   return (
     <div>
-      <Navbar expand="md">
+      <Navbar expand="md" position="sticky" >
         <NavbarBrand href="/">Jobly</NavbarBrand>
         <Nav className="ms-auto " navbar>
           {currentUser ? (
