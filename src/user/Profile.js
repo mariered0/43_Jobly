@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import {Redirect} from "react-router-dom";
 import userContext from "./UserContext";
 import JoblyApi from "../api/api";
 import {
@@ -18,15 +19,17 @@ const Profile = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   useEffect(() => {
-    
-  })
+    if (!currentUser) return;
 
-  const [formData, setFormData] = useState({
-    username: currentUser.username,
-    firstName: currentUser.firstName,
-    lastName: currentUser.lastName,
-    email: currentUser.email,
-  });
+    setFormData({
+      username: currentUser.username,
+      firstName: currentUser.firstName,
+      lastName: currentUser.lastName,
+      email: currentUser.email,
+    });
+  }, [currentUser]);
+
+  const [formData, setFormData] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,6 +64,7 @@ const Profile = () => {
     return (
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <h2 className="mb-3">Profile</h2>
+        {formData && (
         <Card>
           <CardBody>
             <Form>
@@ -74,7 +78,6 @@ const Profile = () => {
                   type="text"
                   value={formData.username}
                   disabled
-                  color="gray"
                 />
 
                 <Label for="firstName" className="mt-3">
@@ -131,8 +134,11 @@ const Profile = () => {
             </Form>
           </CardBody>
         </Card>
+        )}
       </div>
     );
+  }else {
+    return <Redirect to="/" />;
   }
 };
 
