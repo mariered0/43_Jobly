@@ -6,7 +6,7 @@ import { Card, CardTitle, CardText } from "reactstrap";
 const CompanyCard = ({ name, desc, handle }) => {
     const history = useHistory();
 
-    const onClick = () => {
+    const handleClick = () => {
         const path = `/companies/${handle}`;
         history.push(path);
     }
@@ -17,7 +17,7 @@ const CompanyCard = ({ name, desc, handle }) => {
         body
         className="my-2"
         style={{ width: "100%", cursor: "pointer" }}
-        onClick={onClick}
+        onClick={handleClick}
         >
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText>{desc}</CardText>
