@@ -5,34 +5,22 @@ import { Card, CardTitle, List, Button } from "reactstrap";
 
 const JobCard = ({ title, salary, equity, jobId }) => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const [jobApplied, setjobApplied] = useState(currentUser.applications);
-  console.log("currentUser:", currentUser);
+  const [isApplied, setIsApplied] = useState(false);
 
   useEffect(() => {
     if (!currentUser) return;
-    console.log('INSIDE USEEFFECT')
-    setCurrentUser(currentUser);
-    async function handleClick(e) {
-      console.log("e.target", e.target.dataset.jobid);
-      const apply = await JoblyApi.apply(
-        currentUser.username,
-        e.target.dataset.jobid
-      );
-      setjobApplied((jobApplied) => ([...jobApplied, e.target.dataset.jobid]));
-      setCurrentUser(currentUser);
-      console.log(apply);
-    }
-  }, [jobApplied]);
+    const hasApplied = currentUser.applications.includes(jobId);
+    setIsApplied(hasApplied);
+  }, [currentUser]);
 
   async function handleClick(e) {
-    console.log("e.target", e.target.dataset.jobid);
-    const apply = await JoblyApi.apply(
-      currentUser.username,
-      e.target.dataset.jobid
-    );
-    setjobApplied((jobApplied) => ([...jobApplied, e.target.dataset.jobid]));
-    setCurrentUser(currentUser);
-    console.log(apply);
+    try{
+      await JoblyApi.apply(currentUser.username, e.target.id);
+      setCurrentUser(currentUser);
+      setIsApplied(true);
+    } catch (err) {
+      console.error("apply failed", err);
+    } 
   }
 
   return (
@@ -41,10 +29,8 @@ const JobCard = ({ title, salary, equity, jobId }) => {
       <List type="unstyled">
         <li>salary: {salary}</li>
         <li>equity: {equity}</li>
-        <li>JobId: {jobId}</li>
       </List>
 
-      {console.log('JOB APPLIED', jobApplied.includes(jobId))}
       {currentUser && (
         
       <Button
@@ -52,10 +38,10 @@ const JobCard = ({ title, salary, equity, jobId }) => {
         color="danger"
         style={{ width: "70pt" }}
         onClick={handleClick}
-        data-jobId={jobId}
-        disabled={jobApplied.includes(jobId) ? true: false}
+        id={jobId}
+        disabled={isApplied }
       >
-        {jobApplied.includes(jobId) ? 'Applied' : 'Apply'}
+        {isApplied ? 'Applied' : 'Apply'}
       </Button>
       )}
     </Card>
