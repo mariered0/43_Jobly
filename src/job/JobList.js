@@ -17,7 +17,6 @@ const JobList = () => {
   async function search(term) {
     if (!term) term = undefined;
     const getData = await JoblyApi.getJobs(term);
-    console.log('jobs:', getData)
     setJobs(getData);
   }
 
