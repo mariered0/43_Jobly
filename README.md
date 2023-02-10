@@ -3,6 +3,8 @@
 ## Overview
 Jobly is a website where users can sign up and view a list of companies in our database (dummy data), a list of jobs in each company, and apply for it. There's also a search feature for companies and jobs.
 
+![Landing page of Jobly](/images for github/landing_page.jpg?raw=true "Jobly")
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
