@@ -1,6 +1,6 @@
 const webpack = require("webpack");
-
 module.exports = function override(config) {
+  config.ignoreWarnings = [/Failed to parse source map/];
   const fallback = config.resolve.fallback || {};
   Object.assign(fallback, {
     crypto: require.resolve("crypto-browserify"),
@@ -18,7 +18,5 @@ module.exports = function override(config) {
       Buffer: ["buffer", "Buffer"],
     }),
   ]);
-  config.ignoreWarnings = [/Failed to parse source map/];
   return config;
-
 };
