@@ -3,7 +3,15 @@
 ## Overview
 Jobly is a website where users can sign up and view a list of companies in our database (dummy data), a list of jobs in each company, and apply for it. There's also a search feature for companies and jobs.
 
-![Landing page of Jobly](https://github.com/mariered0/43_Jobly/blob/main/images for github/landing_page.jpg?raw=true "Jobly")
+![Landing page of Jobly](https://github.com/mariered0/43_Jobly/blob/main/doc_images/landing_page.png?raw=true "Jobly")
+
+App: [Jobly](https://stimulating-regret.surge.sh)</br>
+Repository of the backend: [Jobly_Backend](https://github.com/mariered0/43_Jobly-backend))</br>
+
+
+
+
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
