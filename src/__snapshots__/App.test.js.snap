@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div>
+      <nav
+        class="navbar navbar-expand-md"
+        position="sticky"
+      >
+        <div
+          class="container-fluid"
+        >
+          <a
+            class="navbar-brand"
+            href="/"
+          >
+            Jobly
+          </a>
+          <ul
+            class="ms-auto  navbar-nav"
+          >
+            <li
+              class="px-2 nav-item"
+            >
+              <a
+                href="/login"
+              >
+                Login
+              </a>
+            </li>
+            <li
+              class="px-2 nav-item"
+            >
+              <a
+                href="/signup"
+              >
+                Sign up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="Home-content"
+      >
+        <h1
+          class="Home-title"
+        >
+          Jobly
+        </h1>
+        <p
+          class="Home-text"
+        >
+          All the jobs in one, convenient place.
+        </p>
+        <a
+          href="/signup"
+        >
+          <button
+            class="Home-btn btn btn-primary"
+          >
+            Sign Up
+          </button>
+        </a>
+        <a
+          href="/login"
+        >
+          <button
+            class="Home-btn btn btn-primary"
+          >
+            Log In
+          </button>
+        </a>
+        <div
+          class="Home-attribute"
+        >
+          Photo by 
+          <a
+            href="https://unsplash.com/@pramodtiwari?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >
+            Pramod Tiwari
+          </a>
+           on 
+          <a
+            href="https://unsplash.com/t/textures-patterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >
+            Unsplash
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
