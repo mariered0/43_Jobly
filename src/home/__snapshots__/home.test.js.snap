@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="Home-content"
+    >
+      <h1
+        class="Home-title"
+      >
+        Jobly
+      </h1>
+      <p
+        class="Home-text"
+      >
+        All the jobs in one, convenient place.
+      </p>
+      <h1
+        class="Home-title"
+      >
+        Welcome Back, !
+      </h1>
+      <div
+        class="Home-attribute"
+      >
+        Photo by 
+        <a
+          href="https://unsplash.com/@pramodtiwari?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >
+          Pramod Tiwari
+        </a>
+         on 
+        <a
+          href="https://unsplash.com/t/textures-patterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >
+          Unsplash
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

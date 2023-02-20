@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <nav
+      class="navbar navbar-expand-md"
+      position="sticky"
+    >
+      <div
+        class="container-fluid"
+      >
+        <a
+          class="navbar-brand"
+          href="/"
+        >
+          Jobly
+        </a>
+        <ul
+          class="ms-auto  navbar-nav"
+        >
+          <li
+            class="px-2 nav-item"
+          >
+            <a
+              href="/companies"
+            >
+              Company
+            </a>
+          </li>
+          <li
+            class="px-2 nav-item"
+          >
+            <a
+              href="/jobs"
+            >
+              Job
+            </a>
+          </li>
+          <li
+            class="px-2 nav-item"
+          >
+            <a
+              href="/profile"
+            >
+              Profile
+            </a>
+          </li>
+          <li
+            class="px-2 nav-item"
+          >
+            <a
+              href="/"
+            >
+              Log out 
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</DocumentFragment>
+`;

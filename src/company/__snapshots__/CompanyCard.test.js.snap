@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="my-2 card card-body"
+      style="width: 100%; cursor: pointer;"
+    >
+      <h5
+        class="card-title"
+      />
+      <p
+        class="card-text"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
